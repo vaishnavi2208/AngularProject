@@ -19,9 +19,9 @@ produts: Products[]=[]
   }
 
   addtocart(){
-
+    alert("product added");
 this.dataservice.saveData(this.produts.values).subscribe((res)=>{
-  alert("product added");
+  
 })
 
   }

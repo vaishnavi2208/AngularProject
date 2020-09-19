@@ -3,7 +3,7 @@ import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Users } from './users';
 
-const api:string= "http://localhost:5555/products/";
+const api:string= "http://localhost:8012/demo/php/";
 
 @Injectable({
 providedIn: 'root'
@@ -16,7 +16,7 @@ baseUrl:string = "///C:/xampp/htdocs/project/demo/php/";
 constructor(private httpClient : HttpClient) { }
 public userlogin(username, password) {
 alert(username)
-return this.httpClient.post<any>(this.baseUrl + '///C:/xampp/htdocs/project/demo/php/login.php' , { username, password })
+return this.httpClient.post<any>(api+ + 'register.php', { username, password })
 .pipe(map(Users => {
 this.setToken(Users[0].name);
 this.getLoggedInName.emit(true);

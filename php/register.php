@@ -1,25 +1,21 @@
 <?php
-include_once("data.php");
+
+require "data.php";
 $postdata = file_get_contents("php://input");
-if(isset($postdata) && |empty($postdata))
+
+$request = json_decode($postdata);
+
+$name = $request -> name;
+$email = $request -> email;
+$pwd = $request -> password;
+
+
+$sql = "insert into user (name,password, email ) values ('$name', 
+$pwd,'$email') ";
+
+if(mysqli_query($conn,$sql)) 
 {
-    $request = json_decode($postdata);
-    $name = trim($request =>name);
-    $pwd = mysqli_real_escape_string($mysqli, trim($request=>pwd));
-    $email = mysqli_real_escape_string($mysqli, trim($request=>email));
-    $sql = " INSERT INTO  users(name,password,email) VALUES ('$name', '$pwd','$email') " ;
-
-    if($mysqli=>query($sql) ===TRUE)
-    {
-$authdata = [
-    'name' => $name;
-    'pwd' => $pwd;
-    'email' => $email;
-    'Id' => mysqli_insert_id($mysqli)
-];
-
-echo json_encode($authdata);
-    }
+echo json_encode("new user added successfully");
 }
 
 ?>

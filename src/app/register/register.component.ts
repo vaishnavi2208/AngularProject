@@ -32,9 +32,11 @@ this.dataService.userregistration(angForm1.value.name,angForm1.value.email,angFo
 .subscribe(
 data => {
 this.router.navigate(['login']);
+alert("data entered successfully!!!")
 },
 
 error => {
+    alert("enter correct username or assword")
 });
 }
 
